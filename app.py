@@ -9,11 +9,11 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+print("Memuat model YOLOv5...")
 # Load YOLOv5 model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 #model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', force_reload=True, trust_repo='check').to(device)
 model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', trust_repo='check').to(device)
-print("Memuat model YOLOv5...")
 #model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', force_reload=True)
 #try:
 #    model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best.pt', force_reload=True)
