@@ -3,6 +3,9 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 import os
 import torch
+import logging
+logging.basicConfig(level=logging.CRITICAL)
+
 
 app = Flask(__name__)
 
