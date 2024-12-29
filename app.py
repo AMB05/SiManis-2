@@ -11,6 +11,8 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 print("Memuat model YOLOv5...")
 # Load YOLOv5 model
@@ -87,7 +89,7 @@ classes_dict = {
                 "2 sendok makan remah roti (bread crumbs)",
                 "2 siung bawang putih, cincang halus",
                 "1/4 cangkir bawang bombay, cincang halus",
-                "●●●●●",
+                
                 "BAHAN SAUS SEMUR:",
                 "2 sendok makan minyak goreng",
                 "1/2 cangkir bawang bombay, cincang kasar",
@@ -99,7 +101,7 @@ classes_dict = {
                 "½ sendok teh ketumbar bubuk",
                 "2 cangkir kaldu sapi",
                 "1 sendok makan tepung maizena, larutkan dengan 2 sendok makan air (opsional, untuk mengentalkan)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 8 porsi dewasa"
             ],
 
@@ -108,7 +110,7 @@ classes_dict = {
                 "Campurkan daging sapi giling, telur, remah roti, bawang putih, bawang bombay dalam mangkuk besar. Aduk rata.",
                 "Bentuk campuran daging menjadi bola-bola kecil dengan diameter sekitar 2,5 cm.",
                 "Rebus dalam air mendidih hingga bola mengapung. Angkat, tiriskan.",
-                "●●●●●",
+                
                 "SAUS SEMUR:",
                 "Panaskan minyak dalam wajan. Tumis bawang bombay dan bawang putih hingga harum dan layu.",
                 "Tambahkan tomat dan masak hingga tomat mulai hancur.",
@@ -153,7 +155,7 @@ classes_dict = {
                 "Bawang putih, haluskan: 3 siung",
                 "Tepung panir: 50 gram",
                 "Minyak goreng untuk menumis: 2 sendok makan",
-                "●●●●●",
+                
                 "BAHAN-BAHAN SAUS BISTIK:",
                 "Margarin: 2 sendok makan",
                 "Bawang bombay, iris tipis: 1/2 buah",
@@ -163,7 +165,7 @@ classes_dict = {
                 "Kecap Inggris: 2 sendok makan",
                 "Kaldu sapi cair: 250 ml",
                 "Tepung maizena: 1 sendok makan (larutkan dengan sedikit air)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 6 porsi dewasa"
             ],
 
@@ -175,7 +177,7 @@ classes_dict = {
                 "Pembentukan dan Pengukusan:",
                 "Ambil adonan, bentuk lonjong atau sesuai selera, dan bungkus dengan alumunium foil atau daun pisang.",
                 "Kukus galantin selama 30-40 menit hingga matang. Angkat dan dinginkan.",
-                "●●●●●",
+                
                 "CARA PEMBUATAN SAUS BISTIK:",
                 "Panaskan margarin di atas wajan. Tumis bawang bombay dan bawang putih hingga harum dan layu.",
                 "Masukkan kecap manis, saus tomat, kecap Inggris, gula, garam, merica, dan pala bubuk. Aduk rata.",
@@ -220,7 +222,7 @@ classes_dict = {
                 "Bawang putih, haluskan: 2 siung",
                 "Bawang bombay, cincang halus: 1/2 buah",
                 "Tepung panir: 100 gram (untuk pelapis)",
-                "●●●●●",
+                
                 "Nugget yang dihasilkan = 20 potong"
             ],
 
@@ -269,7 +271,7 @@ classes_dict = {
                 "Tepung maizena: 2 sendok makan",
                 "Kulit dimsum (bisa beli di toko bahan makanan Asia): 30 lembar",
                 "Air: secukupnya (untuk mengukus dimsum)",
-                "●●●●●",
+                
                 "Dimsum yang dihasilkan = 30 buah"
             ],
 
@@ -277,13 +279,13 @@ classes_dict = {
                 "PERSIAPAN ISIAN:",
                 "Campurkan daging ayam cincang, bawang putih, bawang bombay, dan daun bawang dalam sebuah wadah.",
                 "Tambahkan kecap asin, saus tiram, minyak wijen, dan tepung maizena. Aduk rata hingga semua bahan tercampur.",
-                "●●●●●",
+                
                 "PEMBENTUKAN DIMSUM:",
                 "Ambil selembar kulit dimsum, letakkan satu sendok makan isian di tengah kulit.",
                 "Lipat kulit dimsum menjadi bentuk kantong atau sesuai selera dan rapatkan sisi-sisinya.",
                 "Ulangi hingga semua isian habis.",
-                "●●●●●",
-                "MENGUKUS DIMSUM",
+                
+                "MENGUKUS DIMSUM:",
                 "Panaskan kukusan yang telah dilapisi dengan daun pisang atau kertas roti agar dimsum tidak menempel.",
                 "Tempatkan dimsum dalam kukusan, beri jarak agar tidak saling menempel.",
                 "Kukus dimsum selama 15-20 menit hingga matang.",
@@ -325,14 +327,14 @@ classes_dict = {
                 "Bawang bombay, cincang halus: 1 buah",
                 "Kecap asin: 1 sendok makan",
                 "Tepung panir: 3 sendok makan",
-                "●●●●●",
+                
                 "PEMBUNGKUS TELUR:",
                 "Telur ayam: 4 butir",
                 "Minyak untuk menggoreng: 2 sendok makan",
-                "●●●●●",
+                
                 "PEMBUNGKUS ROLADE:",
                 "Aluminium foil: secukupnya",
-                "●●●●●",
+                
                 "Jumlah yang dihasilkan = 8 gulung"
             ],
 
@@ -340,10 +342,10 @@ classes_dict = {
                 "PERSIAPAN ADONAN ROLADE:",
                 "Campurkan daging ayam cincang, wortel parut, bawang putih, bawang bombay, kecap asin dalam sebuah mangkuk. Aduk rata hingga semua bahan tercampur dengan baik.",
                 "Tambahkan telur kocok dan tepung panir untuk mengikat adonan. Aduk rata.",
-                "●●●●●",
+                
                 "MEMBUAT TELUR GULUNG:",
                 "Panaskan wajan dengan sedikit minyak dan buat telur dadar tipis dari 4 butir telur, lalu angkat dan tiriskan.",
-                "●●●●●",
+                
                 "MEMBENTUK ROLADE:",
                 "Panaskan kukusan. Kukus rolade dalam foil selama 30 menit hingga matang."
             ],
@@ -391,7 +393,7 @@ classes_dict = {
                 "Asam jawa: 15 gram, larutkan dalam 50 ml air",
                 "Gula pasir: 1 sendok teh (5 gram)",
                 "Minyak untuk menumis: 2 sendok makan (30 ml)",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 4 porsi dewasa"
             ],
 
@@ -399,18 +401,18 @@ classes_dict = {
                 "PERSIAPAN IKAN:",
                 "Bersihkan ikan kembung, buang isi perut dan insangnya.",
                 "Potong masing-masing ikan menjadi dua bagian."
-                "●●●●●",
+                
                 "MENUMIS BUMBU",
                 "Panaskan minyak di wajan, tumis bawang merah dan bawang putih hingga harum.",
                 "Tambahkan serai, lengkuas, daun salam, aduk hingga layu.",
-                "●●●●●",
+                
                 "MEMASAK IKAN:",
                 "Masukkan ikan kembung yang sudah dipotong ke dalam tumisan bumbu.",
                 "Aduk perlahan agar ikan tidak hancur.",
-                "●●●●●",
+                
                 "MEMASAK IKAN",
                 "Tambahkan air ke dalam wajan, biarkan hingga mendidih. Setelah mendidih, masukkan tomat dan air asam jawa. Tambahkan gula, aduk rata.",
-                "●●●●●",
+                
                 "PENYELESAIAN:",
                 "Masak dengan api kecil hingga ikan matang dan bumbu meresap (sekitar 15-20 menit). Angkat dan sajikan."
             ],
@@ -455,7 +457,7 @@ classes_dict = {
                 "Gula pasir: 1 sendok teh (5 gram)",
                 "Air: 200 ml",
                 "Minyak untuk menumis: 3 sendok makan (45 ml)",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 4 porsi dewasa"
             ],
 
@@ -463,14 +465,14 @@ classes_dict = {
                 "PERSIAPAN IKAN",
                 "Bersihkan ikan kembung, buang isi perut dan insangnya.",
                 "Lumuri ikan dengan garam dan air jeruk nipis, diamkan selama 10 menit, kemudian goreng setengah matang. Tiriskan.",
-                "●●●●●",
+                
                 "MENUMIS BUMBU:",
                 "Panaskan minyak di wajan, tumis bawang merah, bawang putih, jahe, lengkuas, dan daun salam hingga harum.",
-                "●●●●●",
+                
                 "MEMASAK SAUS:",
                 "Masukkan tomat cincang dan saus tiram. Aduk hingga tomat layu dan mengeluarkan air.",
                 "Tambahkan air. Masak hingga saus mengental dan bumbu meresap.",
-                "●●●●●",
+                
                 "MENGHIDANGKAN:",
                 "Masukkan ikan kembung yang sudah digoreng ke dalam saus. Aduk perlahan hingga ikan terbalut saus. Masak selama 5 menit hingga bumbu meresap. Angkat dan sajikan."
             ],
@@ -512,7 +514,7 @@ classes_dict = {
                 "Putih telur: 2 butir",
                 "Daun pisang: secukupnya untuk membungkus",
                 "Minyak untuk menumis: 2 sendok makan (30 ml)",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 23 Bungkus"
             ],
 
@@ -563,7 +565,7 @@ classes_dict = {
                 "Bawang putih: 20 gram (4 siung), cincang halus",
                 "Bawang putih: 20 gram (4 siung), cincang halus",
                 "Wortel: 50 gram, parut halus",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 20 bola udang"
             ],
 
@@ -608,7 +610,7 @@ classes_dict = {
                 "Telur ayam: 1 butir",
                 "Bawang putih: 20 gram (4 siung), cincang halus",
                 "Daun bawang: 30 gram, iris halus",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 12 porsi dewasa"
             ],
 
@@ -656,7 +658,7 @@ classes_dict = {
                 "Minyak wijen: 1 sendok makan (15 ml)",
                 "Jahe: 10 gram, parut halus",
                 "Air matang: secukupnya (untuk merendam kulit tahu)",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 16 porsi dewasa"
             ],
 
@@ -710,7 +712,7 @@ classes_dict = {
                 "Tomat: 1 buah (100 gram), potong-potong",
                 "Daun bawang: 2 batang (20 gram), iris halus",
                 "Minyak untuk menumis: 1 sendok makan (15 ml)",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 5 porsi dewasa"
             ],
 
@@ -756,7 +758,7 @@ classes_dict = {
                 "Kecap manis: 2 sendok makan (30 ml)",
                 "Saus tiram: 1 sendok makan (15 ml)",
                 "Air jeruk nipis: 1 sendok makan (15 ml)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 4 porsi dewasa"
             ],
 
@@ -808,7 +810,7 @@ classes_dict = {
                 "Lengkuas: 1 cm",
                 "Kencur: 1 cm",
                 "Ketumbar bubuk: 1 sdt",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 12 tusuk"
             ],
 
@@ -858,7 +860,7 @@ classes_dict = {
                 "Seledri: 2 batang, iris halus",
                 "Telur: 1 butir",
                 "Minyak goreng: 1 sdm (untuk olesan teflon)",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 12 porsi dewasa"
             ],
 
@@ -905,7 +907,7 @@ classes_dict = {
                 "Kecap manis: 2 sendok makan (30 ml)",
                 "Saus tiram: 1 sendok makan (15 ml)",
                 "Air jeruk nipis: 1 sendok makan (15 ml)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 4 porsi dewasa"
             ],
 
@@ -951,7 +953,7 @@ classes_dict = {
                 "Kaldu bubuk: 1/2 sendok teh (opsional)",
                 "Daun bawang: 1 batang, iris halus",
                 "Air es: 2 sendok makan (jika adonan terlalu kering)",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 12 porsi dewasa"
             ],
 
@@ -1003,7 +1005,7 @@ classes_dict = {
                 "Telur ayam: 1 butir",
                 "Kaldu bubuk: 1/2 sendok teh (opsional)",
                 "Kulit pangsit: 20 lembar",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 20 buah"
             ],
 
@@ -1059,7 +1061,7 @@ classes_dict = {
                 "Kaldu bubuk: 1/2 sendok teh (opsional)",
                 "Santan encer: 300 ml",
                 "Daun pisang: secukupnya (untuk membungkus)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 4 porsi dewasa"
             ],
 
@@ -1113,7 +1115,7 @@ classes_dict = {
                 "Minyak goreng: 2 sendok makan (untuk menumis)",
                 "Air: 100 ml",
                 "Daun bawang: 1 batang, iris halus (opsional)",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 4 porsi dewasa"
             ],
 
@@ -1167,7 +1169,7 @@ classes_dict = {
                 "Paprika merah: 1 buah, iris tipis",
                 "Minyak zaitun: 1 sendok makan (untuk menumis)",
                 "Susu cair: 30 ml (opsional, untuk menambah kelembutan)",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 2 porsi dewasa"
             ],
 
@@ -1220,7 +1222,7 @@ classes_dict = {
                 "Minyak goreng: 1 sendok makan (untuk menumis bumbu)",
                 "Air: 200 ml (untuk uap",
                 "Cup aluminium foil (untuk membagi adonan)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 6 porsi dewasa"
             ],
 
@@ -1277,7 +1279,7 @@ classes_dict = {
                 "Minyak goreng: 1 sendok makan (untuk menumis bumbu)",
                 "Daun bawang: 1 batang, iris halus (untuk garnish, opsional)",
                 "Air: 100 ml (untuk menambah cairan)",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 13 porsi dewasa"
             ],
 
@@ -1332,12 +1334,12 @@ classes_dict = {
                 "Daun bawang: 2 batang (cincang halus)",
                 "Ketumbar bubuk: 1/2 sendok teh",
                 "Minyak goreng: Secukupnya (untuk menumis)",
-                "●●●●●",
+                
                 "UNTUK PELAPIS:",
                 "Tepung terigu: 50 gram",
                 "Telur ayam: 2 butir (kocok lepas)",
                 "Tepung panir (breadcrumbs): 100 gram",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 20 bola"
             ],
 
@@ -1394,7 +1396,7 @@ classes_dict = {
                 "Kemiri: 3 butir, sangrai dan haluskan",
                 "Jahe: 2 cm, memarkan",
                 "Ketumbar bubuk: 1 sendok teh",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 5 porsi dewasa"
             ],
 
@@ -1440,7 +1442,7 @@ classes_dict = {
                 "Minyak goreng: 2 sendok makan",
                 "Bawang putih: 2 siung (cincang halus)",
                 "Air: 100 ml",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 5 porsi dewasa"
             ],
 
@@ -1497,7 +1499,7 @@ classes_dict = {
                 "Bawang Putih: 2 siung (cincang halus)",
                 "Wortel: 100 gram (parut halus)",
                 "Minyak Goreng: 1 sendok makan (untuk menumis)",
-                "●●●●●",
+                
                 "Porsi yang dihasilkan = 7 porsi dewasa"
             ],
 
@@ -1547,7 +1549,7 @@ classes_dict = {
                 "Wortel - 50 gram, diparut halus",
                 "Kecap asin - 1 sendok makan (15 gram)",
                 "Minyak wijen - 1 sendok teh (5 gram)",
-                "●●●●●",
+                
                 "Jumlah porsi yang dihasilkan = 5 porsi dewasa"
             ],
 
@@ -1598,7 +1600,7 @@ classes_dict = {
                 "Serai: 1 batang (10 gram), memarkan",
                 "Daun kemangi: 1 ikat (20 gram), cuci bersih",
                 "Minyak goreng: 1 sendok makan (15 gram) untuk menumis",
-                "●●●●●",
+                
                 "Jumlah Porsi yang dihasilkan: 6 porsi dewasa"
             ],
             
@@ -1666,12 +1668,18 @@ def index():
                     menu_items.update(classes_dict[detected_class])
 
             # Filter saran-penyajian berdasarkan age_range
+            filtered_menu_items = {}
+
             for menu_name, menu_details in menu_items.items():
-                menu_details['Saran-Penyajian'] = [
+                # Salin menu_details untuk memastikan data asli tidak berubah
+                filtered_details = menu_details.copy()
+                filtered_details['Saran-Penyajian'] = [
                     saran for saran in menu_details['Saran-Penyajian'] if saran['Usia'] == age_range
                 ]
+                filtered_menu_items[menu_name] = filtered_details
 
-            return render_template('index.html', img_path=file_path, menu_items=menu_items)
+
+            return render_template('index.html', img_path=file_path, menu_items=filtered_menu_items)
 
     return render_template('index.html')
 

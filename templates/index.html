@@ -58,6 +58,8 @@
     <script>
         function toggleSection(sectionId) {
             var section = document.getElementById(sectionId);
+            console.log('Toggling section: ', sectionId); // Tambahkan log untuk debugging
+            
             if (section.style.display === "none" || section.style.display === "") {
                 section.style.display = "block";
             } else {
@@ -144,7 +146,7 @@
         <script>
             function validateForm() {
                 var ageRange = document.getElementById('age_range');
-                var errorMessage = document.getElementById('errorMessage');
+                var errorMessage = document.getElementById('error-message');
         
                 if (ageRange.value === "") {
                     errorMessage.classList.remove("hidden"); // Show the error message
@@ -198,25 +200,29 @@
                             </div>
             
                             <button class="w-full bg-yellow-500 text-white p-2 rounded mb-4" onclick="toggleSection('saran-{{ loop.index }}')">Saran Penyajian</button>
-                            <div id="saran-{{ loop.index }}" class="mb-4" style="display: none;">
+                            <div id="saran-{{ loop.index }}" class="mb-4 transition-all duration-300 ease-in-out" style="display: none;">
                                 <ul class="list-disc list-inside justify-self-auto">
-                                    {% for saran in menu_details['Saran-Penyajian'] %}
-                                    <h4 class="font-semibold">Usia:</h4>
-                                        {{ saran['Usia'] }}
-                                    <h1>-----</h1>
-                                    <h4 class="font-semibold">Porsi makan yang dianjurkan:</h4>
-                                        {{ saran['Porsi'] }}
-                                    <h1>-----</h1>
-                                    <h4 class="font-semibold">Kecukupan Protein:</h4>
-                                        {{ saran['Kecukupan Protein'] }}
-                                    <h1>-----</h1>
-                                    <h4 class="font-semibold">Saran Penyajian:</h4>
-                                        {{ saran['Detail'] }}
-                                    <h1>-----</h1>
-                                    <h4 class="font-semibold">Kandungan Protein per 100 gr:</h4>
-                                        {{ saran['Kandungan Protein'] }}
-                                    {% endfor %}
+                                    {% if menu_details['Saran-Penyajian'] and menu_details['Saran-Penyajian']|length > 0 %}
+                                        {% for saran in menu_details['Saran-Penyajian'] %}
+                                        <h4 class="font-semibold">Usia:</h4>
+                                            {{ saran['Usia'] }}
+                                        <h1>-----</h1>
+                                        <h4 class="font-semibold">Porsi makan yang dianjurkan:</h4>
+                                            {{ saran['Porsi'] }}
+                                        <h1>-----</h1>
+                                        <h4 class="font-semibold">Kecukupan Protein:</h4>
+                                            {{ saran['Kecukupan Protein'] }}
+                                        <h1>-----</h1>
+                                        <h4 class="font-semibold">Saran Penyajian:</h4>
+                                            {{ saran['Detail'] }}
+                                        <h1>-----</h1>
+                                        <h4 class="font-semibold">Kandungan Protein per 100 gr:</h4>
+                                            {{ saran['Kandungan Protein'] }}
+                                        {% endfor %}
                                 </ul>
+                                {% else %}
+                                    <p>Tidak ada saran penyajian untuk usia ini.</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -308,6 +314,19 @@
             confirmNo.addEventListener("click", function() {
                 modal.classList.add("hidden"); // sembunyikan modal dan izinkan perbaikan
             });
+
+            // Mengatur bagian "Saran Penyajian" dan "Bahan-Bahan" untuk setiap hasil
+            document.addEventListener("DOMContentLoaded", function() {
+                // Pastikan tombol Saran Penyajian memiliki event listener yang benar
+                var saranButtons = document.querySelectorAll('.toggle-saran');
+                saranButtons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        var sectionId = 'saran-' + button.dataset.index;
+                        toggleSection(sectionId);  // Toggle "Saran Penyajian"
+                    });
+                });
+            });
+
         </script>
 
         <!-- Footer -->
